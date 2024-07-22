@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - The Little Bookstore &copy;</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (same as in index.html) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">The Little Bookstore&copy;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="books.html">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact</a>
+                </li>
+            </ul>
+            <form class="form-inline ml-3">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Book Details -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://i.pinimg.com/736x/49/6b/d3/496bd3297192b8d3d98023d5a62d4145.jpg" class="img-fluid" alt="Book Cover">
+            </div>
+            <div class="col-md-8">
+                <h2>Book Title 1</h2>
+                <p>Author: Author Name 1</p>
+                <p>Rs.10.99</p>
+                <p>Detailed description of the book...</p>
+                <button class="btn btn-primary">Buy Now</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3>Reviews</h3>
+                <p>No reviews yet.</p>
+                <!-- Add reviews as needed -->
+            </div>
+        </div>
+    </div>
+ <!-- Contact Form Modal -->
+ <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Footer (same as in index.html) -->
+    <footer class="bg-light py-4">
+        <div class="container text-center">
+            <p>The little Bookstore&copy; 2024. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact</a>
+            </div>
+            <div>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/256/124/124010.png" alt="Facebook" width="30"></a>
+                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fj1vqat9XLO4cFwOG1uFqLXYDcISiYil2w&s" alt="Twitter" width="30"></a>
+                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4jzLVNYPREMoVmwoWc94Xc-UzXna22YxwlA&s" alt="Instagram" width="30"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>

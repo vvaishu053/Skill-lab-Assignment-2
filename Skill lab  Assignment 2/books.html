@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - The Little Bookstore&copy;</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom CSS styles */
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: box-shadow 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #loadMoreBtn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">The Little Bookstore&copy;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="books.html">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact</a>
+                </li>
+            </ul>
+            <form class="form-inline ml-3">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" onclick="searchBooks()">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Book Filters and Sorting -->
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-lg-3">
+                <h4>Filter by Category</h4>
+                <ul class="list-group">
+                    <li class="list-group-item" onclick="filterBooksByCategory('Fiction')">Fiction</li>
+                    <li class="list-group-item" onclick="filterBooksByCategory('Non-Fiction')">Non-Fiction</li>
+                    <li class="list-group-item" onclick="filterBooksByCategory('Science')">Science</li>
+                    <li class="list-group-item" onclick="filterBooksByCategory('Fantasy')">Fantasy</li>
+                    <li class="list-group-item" onclick="filterBooksByCategory('Anime')">Anime</li>
+                    <!-- Add more categories as needed -->
+                </ul>
+            </div>
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between mb-3">
+                    <h4>Books</h4>
+                    <select class="form-control w-auto" onchange="sortBooks(this.value)">
+                        <option value="relevance">Sort by Relevance</option>
+                        <option value="lowToHigh">Price: Low to High</option>
+                        <option value="highToLow">Price: High to Low</option>
+                        <option value="publicationDate">Publication Date</option>
+                    </select>
+                </div>
+                <div class="row" id="booksContainer">
+                    <!-- Book cards will be dynamically loaded here -->
+                    <!-- Example card -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="https://media.senscritique.com/media/000019303754/source_big/demon_slayer_tome_2.jpg" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">Book Title</h5>
+                                <p class="card-text">Author: Author Name</p>
+                                <p class="card-text">Rs.19.99</p>
+                                <p class="card-text">Brief description of the book...</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                                <button class="btn btn-secondary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional book cards -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.bD6CGBzkJJSjKunUrUkUhwHaHa&pid=Api" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">Another Book Title</h5>
+                                <p class="card-text">Author: Another Author</p>
+                                <p class="card-text">Rs.15.99</p>
+                                <p class="card-text">Brief description of the book...</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                                <button class="btn btn-secondary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="https://tse2.mm.bing.net/th?id=OIP._Ot9QXnESCkCo3Ir8E4DJgHaLL&pid=Api&P=0&h=180" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">Yet Another Book Title</h5>
+                                <p class="card-text">Author: Yet Another Author</p>
+                                <p class="card-text">Rs.22.99</p>
+                                <p class="card-text">Brief description of the book...</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                                <button class="btn btn-secondary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="book-cover4.jpg" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">Another Book Title 2</h5>
+                                <p class="card-text">Author: Another Author 2</p>
+                                <p class="card-text">Rs.18.99</p>
+                                <p class="card-text">Brief description of the book...</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                                <button class="btn btn-secondary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="book-cover5.jpg" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">Book Title 3</h5>
+                                <p class="card-text">Author: Author 3</p>
+                                <p class="card-text">Rs.20.99</p>
+                                <p class="card-text">Brief description of the book...</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                                <button class="btn btn-secondary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="book-cover6.jpg" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">Book Title 4</h5>
+                                <p class="card-text">Author: Author 4</p>
+                                <p class="card-text">Rs.17.99</p>
+                                <p class="card-text">Brief description of the book...</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                                <button class="btn btn-secondary btn-sm">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-center mt-4" id="loadMoreBtn">
+                    <button class="btn btn-primary" onclick="loadMoreBooks()">Load More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Form Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4">
+        <div class="container text-center">
+            <p>The little Bookstore&copy; 2024. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact</a>
+            </div>
+            <div>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/256/124/124010.png" alt="Facebook" width="30"></a>
+                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7fj1vqat9XLO4cFwOG1uFqLXYDcISiYil2w&s" alt="Twitter" width="30"></a>
+                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4jzLVNYPREMoVmwoWc94Xc-UzXna22YxwlA&s" alt="Instagram" width="30"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+        // Simulated functions for search, sorting, and loading more books
+        function searchBooks() {
+            var searchQuery = document.getElementById('searchInput').value;
+            // Implement search functionality based on searchQuery
+            console.log('Searching books for: ' + searchQuery);
+        }
+
+        function sortBooks(sortBy) {
+            // Implement sorting functionality based on sortBy parameter
+            console.log('Sorting books by: ' + sortBy);
+        }
+
+        function loadMoreBooks() {
+            // Implement loading more books functionality
+            console.log('Loading more books...');
+        }
+
+        function filterBooksByCategory(category) {
+            // Implement filtering functionality based on category
+            console.log('Filtering books by category: ' + category);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
